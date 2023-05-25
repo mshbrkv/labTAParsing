@@ -16,6 +16,7 @@ public class XMLDomParser {
 
     public static void readDomXML(String file) {
         try {
+            // Load the XML document
             File inputFile = new File(file);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -24,6 +25,7 @@ public class XMLDomParser {
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
             NodeList departmentList = doc.getElementsByTagName("department");
             for (int i = 0; i < departmentList.getLength(); i++) {
+                // Extract individual department data
                 Element departmentElement = (Element) departmentList.item(i);
                 String departmentName = departmentElement.getAttribute("name");
                 String departmentId = departmentElement.getAttribute("depId");
@@ -33,6 +35,7 @@ public class XMLDomParser {
                 System.out.println("EMPLOYEES IN DEPARTMENT: ");
                 NodeList employeeList = doc.getElementsByTagName("employee");
                 for (int j = 0; j < employeeList.getLength(); j++) {
+                    // Extract individual employee data
                     Element employeeElement = (Element) employeeList.item(j);
                     String employeeId = employeeElement.getAttribute("empId");
 
@@ -50,6 +53,7 @@ public class XMLDomParser {
                     NodeList skillList = employeeElement.getElementsByTagName("skill");
                     System.out.println("Skills:");
                     for (int k = 0; k < skillList.getLength(); k++) {
+                        // Extract individual skill data
                         Element skillElement = (Element) skillList.item(k);
                         String skill = skillElement.getTextContent();
                         System.out.println("- " + skill);
